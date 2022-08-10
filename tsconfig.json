@@ -16,7 +16,7 @@
       "dom"
     ],
     "types": [
-      "googlemaps"
+      "google.maps"
     ]
   },
   "exclude": [

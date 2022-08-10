@@ -654,7 +654,7 @@ export class OverlappingMarkerSpiderfier implements SpiderOptions {
         this.listeners = {};
         this.formatIdleListener = this.formatTimeoutId = null;
 
-        this.addListener('click', (marker: google.maps.Marker, event: google.maps.MouseEvent) => google.maps.event.trigger(marker, 'spider_click', event)); // new-style events, easier to integrate
+        this.addListener('click', (marker: google.maps.Marker, event: google.maps.MapMouseEvent) => google.maps.event.trigger(marker, 'spider_click', event)); // new-style events, easier to integrate
         this.addListener('format', (marker: google.maps.Marker, status: typeof MarkerStatus) => google.maps.event.trigger(marker, 'spider_format', status));
 
         if (!this.ignoreMapClick) {
