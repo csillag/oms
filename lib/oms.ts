@@ -35,7 +35,7 @@ export class OverlappingMarkerSpiderfier implements SpiderOptions {
     private markerListenerRefs: Array<google.maps.MapsEventListener[]> = [];
 
     private formatTimeoutId: number;
-    private formatIdleListener: google.maps.MapsEventListener;
+    private formatIdleListener: number;
 
     private spiderfied: boolean = false;
     private spiderfying: boolean = false;
@@ -136,10 +136,10 @@ export class OverlappingMarkerSpiderfier implements SpiderOptions {
                 return;
             }
 
-            this.formatIdleListener = google.maps.event.addListenerOnce(this.map, 'idle', () => {
-                this.formatIdleListener = null;
+            this.formatIdleListener = setTimeout( () => {
                 this.doFormatMarkers();
-            });
+                this.formatIdleListener = undefined;
+            }, 50);
         });
     }
 
